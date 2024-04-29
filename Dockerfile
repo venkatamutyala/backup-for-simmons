@@ -1,5 +1,5 @@
 # Use an official Ubuntu runtime as a parent image
-FROM ubuntu:22.04
+FROM --platform=linux/arm/v7 ubuntu:20.04
 
 #ENV SYNC_USERNAME
 #ENV SYNC_PASSWORD
