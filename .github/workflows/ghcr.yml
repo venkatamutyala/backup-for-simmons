@@ -2,6 +2,8 @@ name: Build, Tag and Publish Docker image to ghcr.io
  
 on: [push]
 
+permissions: write-all
+
 jobs:
   build_tag_push_to_ghcr:
     runs-on: ubuntu-latest
