@@ -10,7 +10,7 @@ RUN apt-get update -y && \
     rm -rf /var/lib/apt/lists/*
 
 
-COPY simmons-backup.sh /usr/local/bin/simmons-backup
+COPY rsync-backup.sh /usr/local/bin/simmons-backup
 
 # Make yolo.sh executable
 RUN chmod +x /usr/local/bin/simmons-backup
