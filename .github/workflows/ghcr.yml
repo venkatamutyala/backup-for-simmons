@@ -53,6 +53,6 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           provenance: false
-          platforms: linux/arm64,linux/arm/v7,linux/arm64/v8
+          platforms: linux/arm64,linux/arm/v7
 
     
