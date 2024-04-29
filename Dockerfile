@@ -14,3 +14,4 @@ COPY rsync-backup.sh /usr/local/bin/simmons-backup
 
 RUN chmod +x /usr/local/bin/simmons-backup
 
+CMD ["simmons-backup"]
