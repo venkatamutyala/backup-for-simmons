@@ -13,6 +13,7 @@ FROM --platform=linux/arm/v7 ubuntu:20.04
 COPY rsync-backup.sh /usr/local/bin/simmons-backup
 
 # Make yolo.sh executable
+RUN ls -al
 RUN chmod +x /usr/local/bin/simmons-backup
 
 #mount.cifs //192.168.6.161/PlexData /mnt/qnap/ -o user=$SYNC_USERNAME,password=$SYNC_PASSWORD,vers=2.1
