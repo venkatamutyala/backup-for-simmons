@@ -6,9 +6,13 @@ FROM ubuntu:22.04@sha256:77906da86b60585ce12215807090eb327e7386c8fafb5402369e421
 
 RUN apt-get update -y && \
     apt-get upgrade -y && \
-    apt-get install -y curl cifs-utils inetutils-ping && \
+    apt-get install -y curl cifs-utils inetutils-ping rsync && \
     rm -rf /var/lib/apt/lists/*
 
 
+COPY simmons-backup.sh /usr/local/bin/simmons-backup
+
+# Make yolo.sh executable
+RUN chmod +x /usr/local/bin/simmons-backup
 
 #mount.cifs //192.168.6.161/PlexData /mnt/qnap/ -o user=$SYNC_USERNAME,password=$SYNC_PASSWORD,vers=2.1
