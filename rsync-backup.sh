@@ -35,3 +35,8 @@ mount_if_needed() {
 # Mount the shares to the specified mount points
 mount_if_needed "$SHARE1" "$MOUNT1"
 mount_if_needed "$SHARE2" "$MOUNT2"
+
+
+
+# Add RSYNC commands
+rsync -avh /mnt/qnap/Exercise/ /mnt/plexserver/Exercise/ --dry-run
