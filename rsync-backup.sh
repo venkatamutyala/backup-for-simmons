@@ -57,14 +57,14 @@ while true; do
     # Calculate time since last run
     TIME_SINCE_LAST_RUN=$(( CURRENT_TIME - LAST_RUN_TIME ))
 
-    # Check if an hour has passed since the last run (3600 seconds)
+    # Check if an hour has passed since the last run (120 seconds)
     if [ "$TIME_SINCE_LAST_RUN" -ge 120 ]; then
         # Record the current time as the last run time
         echo "$CURRENT_TIME" > "$LAST_RUN_FILE"
 
         # Log and run the rsync command
-        echo "Running rsync: $(date)" >> "$LOG_FILE"
-        rsync -avh /mnt/qnap/Exercise/ /mnt/plexserver/Exercise/ --dry-run >> "$LOG_FILE"
+        echo "Running rsync: $(date)"
+        rsync -avh /mnt/qnap/Exercise/ /mnt/plexserver/Exercise/ --dry-run
     fi
 
     # Sleep for a short period to avoid excessive CPU usage, then check again
