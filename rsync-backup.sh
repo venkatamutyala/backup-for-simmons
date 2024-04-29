@@ -58,7 +58,7 @@ while true; do
     TIME_SINCE_LAST_RUN=$(( CURRENT_TIME - LAST_RUN_TIME ))
 
     # Check if an hour has passed since the last run (3600 seconds)
-    if [ "$TIME_SINCE_LAST_RUN" -ge 3600 ]; then
+    if [ "$TIME_SINCE_LAST_RUN" -ge 120 ]; then
         # Record the current time as the last run time
         echo "$CURRENT_TIME" > "$LAST_RUN_FILE"
 
