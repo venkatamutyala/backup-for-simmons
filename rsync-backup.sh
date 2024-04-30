@@ -5,8 +5,13 @@ set -e
 # Define the mount points and network shares
 MOUNT1="/mnt/qnap/"
 SHARE1="//192.168.6.161/PlexData"
-MOUNT2="/mnt/plexserver/"
+MOUNT2="/mnt/plexserver2/"
 SHARE2="//192.168.4.38/PlexData2"
+MOUNT3="/mnt/plexserver/"
+SHARE3="//192.168.4.38/PlexData"
+MOUNT4="/mnt/itunes/"
+SHARE4="//192.168.4.38/iTunes"
+
 
 # Function to check and mount if not already mounted using findmnt
 mount_if_needed() {
@@ -35,7 +40,8 @@ mount_if_needed() {
 # Mount the shares to the specified mount points
 mount_if_needed "$SHARE1" "$MOUNT1"
 mount_if_needed "$SHARE2" "$MOUNT2"
-
+mount_if_needed "$SHARE3" "$MOUNT3"
+mount_if_needed "$SHARE4" "$MOUNT4"
 
 
 # Path to the rsync log file
@@ -57,16 +63,31 @@ while true; do
     # Calculate time since last run
     TIME_SINCE_LAST_RUN=$(( CURRENT_TIME - LAST_RUN_TIME ))
 
-    # Check if an 120 seconds has passed since the last run
-    if [ "$TIME_SINCE_LAST_RUN" -ge 120 ]; then
+    # Check if an 4 hours has passed since the last run
+    if [ "$TIME_SINCE_LAST_RUN" -ge $((60*60*4)) ]; then
         # Record the current time as the last run time
         echo "$CURRENT_TIME" > "$LAST_RUN_FILE"
 
         # Log and run the rsync command
         echo "Running rsync: $(date)"
-        rsync -avh /mnt/qnap/Exercise/ /mnt/plexserver/Exercise/ --dry-run
+
+        # the folders stored on PlexData2 Share
+        rsync -avh "/mnt/qnap/Exercise/" "/mnt/plexserver2/Exercise/" --dry-run
+        rsync -avh "/mnt/qnap/Greg Towes Healing with Oils/" "/mnt/plexserver2/Greg Towes Healing with Oils/" --dry-run
+        rsync -avh "/mnt/qnap/Miscellaneous/" "/mnt/plexserver2/Miscellaneous/" --dry-run
+        rsync -avh "/mnt/qnap/Photos/" "/mnt/plexserver2/Photos/" --dry-run
+        rsync -avh "/mnt/qnap/Robert's Edits/" "/mnt/plexserver2/Robert's Edits/" --dry-run
+
+        # folder stored on PlexData Share
+        rsync -avh "/mnt/qnap/backup/" "/mnt/plexserver/backup/" --dry-run
+        rsync -avh "/mnt/qnap/Movies/" "/mnt/plexserver/Movies/" --dry-run
+        rsync -avh "/mnt/qnap/TV Shows/" "/mnt/plexserver/TV Shows/" --dry-run
+        rsync -avh "/mnt/qnap/Vision Boards/" "/mnt/plexserver/Vision Boards/" --dry-run
+
+        # folder stored on iTunes Share
+        rsync -avh "/mnt/qnap/iTunes/" "/mnt/iTunes/iTunes/" --dry-run
     fi
 
-    # Sleep for a short period to avoid excessive CPU usage, then check again
-    sleep 60
+    # Sleep for ten minutes to avoid excessive CPU usage, then check again
+    sleep $((60*10))
 done
