@@ -79,7 +79,7 @@ while true; do
         rsync -avvh --delete "/mnt/qnap/Robert's Edits/" "/mnt/plexserver2/Robert's Edits/"
 
         # # folder stored on PlexData Share
-        rsync -avvh --delete "/mnt/qnap/backup/" "/mnt/plexserver/backup/"
+        #rsync -avvh --delete "/mnt/qnap/backup/" "/mnt/plexserver/backup/"
         rsync -avvh --delete "/mnt/qnap/Movies/" "/mnt/plexserver/Movies/"
         rsync -avvh --delete "/mnt/qnap/TV Shows/" "/mnt/plexserver/TV Shows/"
         rsync -avvh --delete "/mnt/qnap/Vision Boards/" "/mnt/plexserver/Vision Boards/"
