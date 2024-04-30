@@ -43,6 +43,8 @@ mount_if_needed "$SHARE2" "$MOUNT2"
 mount_if_needed "$SHARE3" "$MOUNT3"
 mount_if_needed "$SHARE4" "$MOUNT4"
 
+# Path to store the last run timestamp
+LAST_RUN_FILE="last_run.txt"
 
 while true; do
     # Current time in seconds since the epoch
