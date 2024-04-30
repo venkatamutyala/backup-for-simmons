@@ -44,15 +44,16 @@ mount_if_needed "$SHARE3" "$MOUNT3"
 mount_if_needed "$SHARE4" "$MOUNT4"
 
 # Path to store the last run timestamp
-LAST_RUN_FILE="last_run.txt"
+LOG_FILE="log_run.txt"
 
 while true; do
     # Current time in seconds since the epoch
-    CURRENT_TIME=$(date +%s)
+    START_TIME=$(date +%s)
 
     # Record the current time as the last run time
-    echo "$CURRENT_TIME" > "$LAST_RUN_FILE"
-
+    echo "START TIME: ${START_TIME}" >> "$LOG_FILE"
+    echo "START TIME: ${START_TIME}"
+    
     # Log and run the rsync command
     echo "Running rsync: $(date)"
 
@@ -71,7 +72,10 @@ while true; do
 
     # # folder stored on iTunes Share
     #rsync -avvh --delete "/mnt/qnap/iTunes/" "/mnt/iTunes/iTunes/"
-
+    FINISH_TIME=$(date +%s)
     # Sleep for ten minutes to avoid excessive CPU usage, then check again
+    echo "FINISH TIME: ${FINISH_TIME}" >> "$LOG_FILE"
+    echo "FINISH TIME: ${FINISH_TIME}"
+    
     sleep 14400
 done
