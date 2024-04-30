@@ -44,50 +44,32 @@ mount_if_needed "$SHARE3" "$MOUNT3"
 mount_if_needed "$SHARE4" "$MOUNT4"
 
 
-# Path to the rsync log file
-LOG_FILE="rsync.log"
-# Path to store the last run timestamp
-LAST_RUN_FILE="last_run.txt"
-
-# Initialize the last run time
-if [ ! -f "$LAST_RUN_FILE" ]; then
-    echo "0" > "$LAST_RUN_FILE"
-fi
-
 while true; do
     # Current time in seconds since the epoch
     CURRENT_TIME=$(date +%s)
-    # Last run time from file
-    LAST_RUN_TIME=$(cat "$LAST_RUN_FILE")
 
-    # Calculate time since last run
-    TIME_SINCE_LAST_RUN=$(( CURRENT_TIME - LAST_RUN_TIME ))
+    # Record the current time as the last run time
+    echo "$CURRENT_TIME" > "$LAST_RUN_FILE"
 
-    # Check if an 4 hours has passed since the last run
-    if [ "$TIME_SINCE_LAST_RUN" -ge $((60*60*4)) ]; then
-        # Record the current time as the last run time
-        echo "$CURRENT_TIME" > "$LAST_RUN_FILE"
+    # Log and run the rsync command
+    echo "Running rsync: $(date)"
 
-        # Log and run the rsync command
-        echo "Running rsync: $(date)"
+    # the folders stored on PlexData2 Share
+    rsync -avvh --delete "/mnt/qnap/Exercise/" "/mnt/plexserver2/Exercise/"
+    rsync -avvh --delete "/mnt/qnap/Greg Towes Healing with Oils/" "/mnt/plexserver2/Greg Towes Healing with Oils/"
+    rsync -avvh --delete "/mnt/qnap/Miscellaneous/" "/mnt/plexserver2/Miscellaneous/"
+    rsync -avvh --delete "/mnt/qnap/Photos/" "/mnt/plexserver2/Photos/"
+    rsync -avvh --delete "/mnt/qnap/Robert's Edits/" "/mnt/plexserver2/Robert's Edits/"
 
-        # the folders stored on PlexData2 Share
-        rsync -avvh --delete "/mnt/qnap/Exercise/" "/mnt/plexserver2/Exercise/"
-        rsync -avvh --delete "/mnt/qnap/Greg Towes Healing with Oils/" "/mnt/plexserver2/Greg Towes Healing with Oils/"
-        rsync -avvh --delete "/mnt/qnap/Miscellaneous/" "/mnt/plexserver2/Miscellaneous/"
-        rsync -avvh --delete "/mnt/qnap/Photos/" "/mnt/plexserver2/Photos/"
-        rsync -avvh --delete "/mnt/qnap/Robert's Edits/" "/mnt/plexserver2/Robert's Edits/"
+    # # folder stored on PlexData Share
+    #rsync -avvh --delete "/mnt/qnap/backup/" "/mnt/plexserver/backup/"
+    rsync -avvh --delete "/mnt/qnap/Movies/" "/mnt/plexserver/Movies/"
+    rsync -avvh --delete "/mnt/qnap/TV Shows/" "/mnt/plexserver/TV Shows/"
+    rsync -avvh --delete "/mnt/qnap/Vision Boards/" "/mnt/plexserver/Vision Boards/"
 
-        # # folder stored on PlexData Share
-        #rsync -avvh --delete "/mnt/qnap/backup/" "/mnt/plexserver/backup/"
-        rsync -avvh --delete "/mnt/qnap/Movies/" "/mnt/plexserver/Movies/"
-        rsync -avvh --delete "/mnt/qnap/TV Shows/" "/mnt/plexserver/TV Shows/"
-        rsync -avvh --delete "/mnt/qnap/Vision Boards/" "/mnt/plexserver/Vision Boards/"
-
-        # # folder stored on iTunes Share
-        rsync -avvh --delete "/mnt/qnap/iTunes/" "/mnt/iTunes/iTunes/"
-    fi
+    # # folder stored on iTunes Share
+    rsync -avvh --delete "/mnt/qnap/iTunes/" "/mnt/iTunes/iTunes/"
 
     # Sleep for ten minutes to avoid excessive CPU usage, then check again
-    sleep $((60*10))
+    sleep $((60*60*4))
 done
