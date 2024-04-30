@@ -72,7 +72,7 @@ while true; do
         echo "Running rsync: $(date)"
 
         # the folders stored on PlexData2 Share
-        rsync -avvh "/mnt/qnap/Exercise/" "/mnt/plexserver2/Exercise/"
+        rsync -avvh --delete "/mnt/qnap/Exercise/" "/mnt/plexserver2/Exercise/"
         # rsync -avh "/mnt/qnap/Greg Towes Healing with Oils/" "/mnt/plexserver2/Greg Towes Healing with Oils/" --dry-run
         # rsync -avh "/mnt/qnap/Miscellaneous/" "/mnt/plexserver2/Miscellaneous/" --dry-run
         # rsync -avh "/mnt/qnap/Photos/" "/mnt/plexserver2/Photos/" --dry-run
@@ -82,7 +82,7 @@ while true; do
         # rsync -avh "/mnt/qnap/backup/" "/mnt/plexserver/backup/" --dry-run
         # rsync -avh "/mnt/qnap/Movies/" "/mnt/plexserver/Movies/" --dry-run
         # rsync -avh "/mnt/qnap/TV Shows/" "/mnt/plexserver/TV Shows/" --dry-run
-        rsync -avvh "/mnt/qnap/Vision Boards/" "/mnt/plexserver/Vision Boards/"
+        rsync -avvh --delete "/mnt/qnap/Vision Boards/" "/mnt/plexserver/Vision Boards/"
 
         # # folder stored on iTunes Share
         # rsync -avh "/mnt/qnap/iTunes/" "/mnt/iTunes/iTunes/" --dry-run
