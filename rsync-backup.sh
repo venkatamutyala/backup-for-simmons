@@ -72,20 +72,20 @@ while true; do
         echo "Running rsync: $(date)"
 
         # the folders stored on PlexData2 Share
-        rsync -avh "/mnt/qnap/Exercise/" "/mnt/plexserver2/Exercise/" --dry-run
-        rsync -avh "/mnt/qnap/Greg Towes Healing with Oils/" "/mnt/plexserver2/Greg Towes Healing with Oils/" --dry-run
-        rsync -avh "/mnt/qnap/Miscellaneous/" "/mnt/plexserver2/Miscellaneous/" --dry-run
-        rsync -avh "/mnt/qnap/Photos/" "/mnt/plexserver2/Photos/" --dry-run
-        rsync -avh "/mnt/qnap/Robert's Edits/" "/mnt/plexserver2/Robert's Edits/" --dry-run
+        rsync -avh "/mnt/qnap/Exercise/" "/mnt/plexserver2/Exercise/"
+        # rsync -avh "/mnt/qnap/Greg Towes Healing with Oils/" "/mnt/plexserver2/Greg Towes Healing with Oils/" --dry-run
+        # rsync -avh "/mnt/qnap/Miscellaneous/" "/mnt/plexserver2/Miscellaneous/" --dry-run
+        # rsync -avh "/mnt/qnap/Photos/" "/mnt/plexserver2/Photos/" --dry-run
+        # rsync -avh "/mnt/qnap/Robert's Edits/" "/mnt/plexserver2/Robert's Edits/" --dry-run
 
-        # folder stored on PlexData Share
-        rsync -avh "/mnt/qnap/backup/" "/mnt/plexserver/backup/" --dry-run
-        rsync -avh "/mnt/qnap/Movies/" "/mnt/plexserver/Movies/" --dry-run
-        rsync -avh "/mnt/qnap/TV Shows/" "/mnt/plexserver/TV Shows/" --dry-run
-        rsync -avh "/mnt/qnap/Vision Boards/" "/mnt/plexserver/Vision Boards/" --dry-run
+        # # folder stored on PlexData Share
+        # rsync -avh "/mnt/qnap/backup/" "/mnt/plexserver/backup/" --dry-run
+        # rsync -avh "/mnt/qnap/Movies/" "/mnt/plexserver/Movies/" --dry-run
+        # rsync -avh "/mnt/qnap/TV Shows/" "/mnt/plexserver/TV Shows/" --dry-run
+        rsync -avh "/mnt/qnap/Vision Boards/" "/mnt/plexserver/Vision Boards/"
 
-        # folder stored on iTunes Share
-        rsync -avh "/mnt/qnap/iTunes/" "/mnt/iTunes/iTunes/" --dry-run
+        # # folder stored on iTunes Share
+        # rsync -avh "/mnt/qnap/iTunes/" "/mnt/iTunes/iTunes/" --dry-run
     fi
 
     # Sleep for ten minutes to avoid excessive CPU usage, then check again
