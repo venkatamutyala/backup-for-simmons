@@ -68,7 +68,7 @@ while true; do
     # rsync -avvh --delete "/mnt/qnap/Vision Boards/" "/mnt/plexserver/Vision Boards/"
 
     # # folder stored on iTunes Share
-    rsync -avvh --delete "/mnt/qnap/iTunes/iTunes Media/" "/mnt/iTunes Media"
+    rsync -avvh --delete "/mnt/qnap/iTunes/iTunes Media/" "/mnt/plexserver/iTunes Media/"
     
     FINISH_TIME=$(date '+%Y-%m-%d %H:%M:%S')
     # Sleep for ten minutes to avoid excessive CPU usage, then check again
