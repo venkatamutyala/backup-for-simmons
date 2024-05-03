@@ -54,9 +54,6 @@ while true; do
     echo "START TIME: ${START_TIME}" >> "$LOG_FILE"
     echo "START TIME: ${START_TIME}"
     
-    # Log and run the rsync command
-    echo "Running rsync: $(date)"
-
     # the folders stored on PlexData2 Share
     rsync -avvh --delete "/mnt/qnap/Exercise/" "/mnt/plexserver2/Exercise/"
     rsync -avvh --delete "/mnt/qnap/Greg Towes Healing with Oils/" "/mnt/plexserver2/Greg Towes Healing with Oils/"
@@ -71,7 +68,7 @@ while true; do
     rsync -avvh --delete "/mnt/qnap/Vision Boards/" "/mnt/plexserver/Vision Boards/"
 
     # # folder stored on iTunes Share
-    rsync -avvh --delete "/mnt/qnap/iTunes/" "/mnt/iTunes/iTunes/"
+    rsync -avvh --delete "/mnt/qnap/iTunes Media/" "/mnt/iTunes Media"
     
     FINISH_TIME=$(date '+%Y-%m-%d %H:%M:%S')
     # Sleep for ten minutes to avoid excessive CPU usage, then check again
