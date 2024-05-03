@@ -48,7 +48,7 @@ LOG_FILE="log_run.txt"
 
 while true; do
     # Current time in seconds since the epoch
-    START_TIME=$(date +%s)
+    START_TIME=$(date '+%Y-%m-%d %H:%M:%S')
 
     # Record the current time as the last run time
     echo "START TIME: ${START_TIME}" >> "$LOG_FILE"
@@ -71,8 +71,9 @@ while true; do
     rsync -avvh --delete "/mnt/qnap/Vision Boards/" "/mnt/plexserver/Vision Boards/"
 
     # # folder stored on iTunes Share
-    #rsync -avvh --delete "/mnt/qnap/iTunes/" "/mnt/iTunes/iTunes/"
-    FINISH_TIME=$(date +%s)
+    rsync -avvh --delete "/mnt/qnap/iTunes/" "/mnt/iTunes/iTunes/"
+    
+    FINISH_TIME=$(date '+%Y-%m-%d %H:%M:%S')
     # Sleep for ten minutes to avoid excessive CPU usage, then check again
     echo "FINISH TIME: ${FINISH_TIME}" >> "$LOG_FILE"
     echo "FINISH TIME: ${FINISH_TIME}"
