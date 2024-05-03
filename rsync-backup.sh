@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# set -e
+set -e
 
 # Define the mount points and network shares
 MOUNT1="/mnt/qnap/"
