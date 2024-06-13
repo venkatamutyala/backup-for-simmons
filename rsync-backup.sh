@@ -4,13 +4,13 @@ set -e
 
 # Define the mount points and network shares
 MOUNT1="/mnt/qnap/"
-SHARE1="//192.168.6.161/PlexData"
+SHARE1="//plexd.randrservices.com/PlexData"
 MOUNT2="/mnt/plexserver2/"
-SHARE2="//192.168.4.38/PlexData2"
+SHARE2="//plexs.randrservices.com/PlexData2"
 MOUNT3="/mnt/plexserver/"
-SHARE3="//192.168.4.38/PlexData"
+SHARE3="//plexs.randrservices.com/PlexData"
 MOUNT4="/mnt/itunes/"
-SHARE4="//192.168.4.38/iTunes"
+SHARE4="//plexs.randrservices.com/iTunes"
 
 
 # Function to check and mount if not already mounted using findmnt
@@ -66,6 +66,7 @@ while true; do
     rsync -avvh --delete "/mnt/qnap/Movies/" "/mnt/plexserver/Movies/"
     rsync -avvh --delete "/mnt/qnap/TV Shows/" "/mnt/plexserver/TV Shows/"
     rsync -avvh --delete "/mnt/qnap/Vision Boards/" "/mnt/plexserver/Vision Boards/"
+    rsync -avvh --delete "/mnt/qnap/Books/" "/mnt/plexserver/Books/"
 
     # # folder stored on iTunes Share
     rsync -avvh --delete "/mnt/qnap/iTunes/iTunes Media/" "/mnt/itunes/iTunes Media/"
