@@ -1,5 +1,5 @@
 # Use an official Ubuntu runtime as a parent image
-FROM --platform=linux/arm/v7 ubuntu:20.04@sha256:0b897358ff6624825fb50d20ffb605ab0eaea77ced0adb8c6a4b756513dec6fc
+FROM --platform=linux/arm/v7 ubuntu:22.04@sha256:19478ce7fc2ffbce89df29fea5725a8d12e57de52eb9ea570890dc5852aac1ac
 
 #ENV SYNC_USERNAME
 #ENV SYNC_PASSWORD
