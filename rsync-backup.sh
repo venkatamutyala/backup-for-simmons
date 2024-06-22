@@ -4,13 +4,13 @@ set -e
 
 # Define the mount points and network shares
 MOUNT1="/mnt/qnap/"
-SHARE1="/plexd.randrservices.com/PlexData"
+SHARE1="//plexd.randrservices.com/PlexData"
 MOUNT2="/mnt/plexserver2/"
-SHARE2="/plexs.randrservices.com/PlexData2"
+SHARE2="//plexs.randrservices.com/PlexData2"
 MOUNT3="/mnt/plexserver/"
-SHARE3="/plexs.randrservices.com/PlexData"
+SHARE3="//plexs.randrservices.com/PlexData"
 MOUNT4="/mnt/itunes/"
-SHARE4="/plexs.randrservices.com/iTunes"
+SHARE4="//plexs.randrservices.com/iTunes"
 
 
 # Function to check and mount if not already mounted using findmnt
