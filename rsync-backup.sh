@@ -3,8 +3,8 @@
 set -e
 
 # Define the mount points and network shares
-MOUNT1="/mnt/qnap/"
-SHARE1="//plexd.randrservices.com/PlexData"
+MOUNT1="/mnt/qnap/tvshows"
+SHARE1="//plexd.randrservices.com/PlexData/TV Shows"
 MOUNT2="/mnt/plexserver2/"
 SHARE2="//plexs.randrservices.com/PlexData2"
 MOUNT3="/mnt/plexserver/"
@@ -39,9 +39,9 @@ mount_if_needed() {
 
 # Mount the shares to the specified mount points
 mount_if_needed "$SHARE1" "$MOUNT1"
-mount_if_needed "$SHARE2" "$MOUNT2"
-mount_if_needed "$SHARE3" "$MOUNT3"
-mount_if_needed "$SHARE4" "$MOUNT4"
+# mount_if_needed "$SHARE2" "$MOUNT2"
+# mount_if_needed "$SHARE3" "$MOUNT3"
+# mount_if_needed "$SHARE4" "$MOUNT4"
 
 # Path to store the last run timestamp
 LOG_FILE="log_run.txt"
